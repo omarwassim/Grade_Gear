@@ -1,0 +1,47 @@
+<%- include('partials/registerheader') %>
+<main class="background_wrapper">
+  <div class="login_form_wrapper">
+    <form action="/register" class="login__form" method="post">
+      <h1 class="title">register</h1>
+      <div class="login_form_content">
+        <div class="login_content_box">
+          <ion-icon name="person-outline"></ion-icon>
+          <div class="login_content_box--input">
+            <input
+              type="email"
+              placeholder=" "
+              class="login__input email--input"
+              required
+              name="username"
+              autocomplete="off"
+            />
+            <label for="email" class="login__label">Email</label>
+          </div>
+      </div>
+        <div class="login_content_box">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+
+          <div class="login_content_box--input">
+            <input
+              type="password"
+              placeholder=" "
+              class="login__input password--input"
+              required
+              name="password"
+            />
+            <label for="password" class="login__label" >Password</label>
+            <ion-icon
+              class="password__hidden"
+              id="password_hidden"
+              name="eye-off-outline"
+            ></ion-icon>
+          </div>
+        </div>
+        <button type="submit" class="button__login">Register</button>
+    </form>
+  </div>
+</main>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src="../javascript/login.js"></script>
+<%- include('partials/footer') %>

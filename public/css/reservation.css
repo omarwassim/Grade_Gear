@@ -1,0 +1,78 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    }
+  header {
+    background: linear-gradient(135deg, #10374A, #10374A);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    letter-spacing: 2px;
+  }
+  header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  .form-control-lg {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .form-control-lg:focus {
+    border-color: #10374A;
+    box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #10374A, #10374A);
+    border: none;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgb#10374A;
+  }
+  footer {
+    font-size: 0.9rem;
+    background-color: #10374A;
+  }
+  .form-check-input {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid  #10374A;
+    transition: all 0.3s ease;
+  }
+  .form-check-input:checked {
+    background-color: #10374A;
+    border-color: #10374A;
+  }
+  .form-check-label {
+    font-size: 1rem;
+    margin-left: 10px;
+    color: #10374A;
+    transition: color 0.3s ease;
+  }
+  .form-check-input:checked + .form-check-label {
+    color: #10374A;
+  }
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1rem;
+    }
+    .btn-primary {
+      font-size: 1rem;
+    }
+  }

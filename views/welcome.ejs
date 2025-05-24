@@ -1,0 +1,138 @@
+<%- include('partials/welcomeheader') %>
+<body>
+<div>
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+            </div>
+            <nav>
+              <ul class="nav-items">
+                <li><a href="#">Home</a></li>
+                <li><a href="#container">Services</a></li>
+                <li><a href="/engineers" role="button">engineers</a></li>
+                <li><a href="/reservation" role="button">Reservation</a></li>
+              </ul>
+            </nav>
+            <div class="dropdown">
+                <% if (user) { %>
+                  <button class="btn btn-secondary " type="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= user.name || user.email.split('@')[0] %>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <% if (user.is_admin) { %>
+                      <li><a href="/admin" class="dropdown-item">Admin Dashboard</a></li>
+                    <% } %>
+                    <li><a href="/profile" class="dropdown-item">Profile</a></li>
+                    <li><a href="/reservations" class="dropdown-item">My Reservations</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a href="/logout" class="dropdown-item">Logout</a></li>
+                  </ul>
+                <% } else { %>
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    My Account
+                  </button>
+                <% } %>
+              </div>
+        </header>
+        <div class="banner-text">
+          <div class="single-banner">
+            <h2>GRADEGEAR</h2>
+            <p class="p1">GEARUP GRADUATE GRADE</p>
+            <p class="p2">
+              "We are a team of passionate
+              <span >engineers</span> dedicated to turning your
+              vision into reality. Our mission is not just to build your project for
+              you, but to guide and empower you through the process, ensuring you
+              can bring your ideas to life yourself. We combine technical expertise
+              with hands-on mentorship, helping you understand every step—from
+              concept to creation. Together, we don’t just deliver solutions; we
+              equip you with the skills and confidence to build them independently."
+            </p>
+            <!-- <a href="/login" role="button">Sign in</a>
+            <a href="/register " role="button" class="sign">Sign up</a> -->
+          </div>
+        </div>
+      </div>
+      <hr />
+
+        <div href="#About" class="section-header">
+          <h2>Our Services</h2>
+        </div>
+    
+        <div class="container" id="container">
+          <div class="box">
+            <span></span>
+            <h3>Network</h3>
+            <h3>service</h3>
+            <p>
+              We design and optimize robust network infrastructures for reliability and performance. From LAN to cloud, we keep your operations connected and efficient.
+            </p>
+          </div>
+          <div class="box">
+            <h3>Web Development</h3>
+            <h3>service</h3>
+            <p>
+              We build fast, scalable, and responsive websites tailored to your needs. Whether frontend elegance or backend power, we deliver seamless digital experiences
+            </p>
+          </div>
+          <div class="box">
+            <span></span>
+            <h3>Database</h3>
+            <h3>service</h3>
+            <p>
+              We structure efficient databases for seamless data storage, access, and analysis. Optimized performance ensures your information is always at your fingertips.
+            </p>
+          </div>
+          <div class="box">
+            <span></span>
+            <h3>Mobile</h3>
+            <h3>App Development</h3>
+            <p>
+              We create cross-platform apps with sleek designs and smooth functionality. From concept to launch, we build mobile solutions that engage users.
+            </p>
+          </div>
+          <div class="box">
+            <span></span>
+            <h3>UI/UX</h3>
+            <h3>Design</h3>
+            <p>
+              We design intuitive, visually captivating interfaces that prioritize user experience. From wireframes to prototypes, we ensure your product is both functional and delightful.
+            </p>
+          </div>
+          <div class="box">
+            <span></span>
+            <h3>AI</h3>
+            <h3>service</h3>
+            <p>
+              We develop smart algorithms to automate tasks and extract actionable insights. Transform data into intelligent solutions that drive innovation.
+            </p>
+          </div>
+          <div class="box">
+            <span></span>
+            <h3>Embedded system service</h3>
+            <p>
+              We engineer custom hardware-software integrations for IoT and industrial applications. Precision-built systems that perform in real-world environments.
+            </p>
+          </div>
+          <div class="box">
+            <span></span>
+            <h3>Cyber security service</h3>
+            <p>
+              We protect your systems with cutting-edge threat detection and prevention strategies. Our solutions ensure data integrity and compliance, keeping your business secure
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <footer class="footer">
+        <p class="copyright">&copy; <span>GRADEGEAR</span></p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/moura.eldessouki/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/omar-wassim-b34b192ba/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/omarwassim"><i class="fa-brands fa-github"></i></a>
+                <a href="https://stackoverflow.com/users/25824378/omar-wassim"><i class="fa-brands fa-stack-overflow"></i></a>
+        </div>
+    </footer>
+</div>
+        
+        <%- include('partials/footer') %>

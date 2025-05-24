@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Akram </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body {
+      background-image: url(../../photos/wallpaper.png);
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; 
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; 
+      scroll-behavior: smooth;
+    }
+
+    .wrapper {
+      background-position: center center;
+      background-attachment: scroll;
+    }
+
+    header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      margin: 20px auto;
+      width: 100%;
+    }
+
+    nav {
+      margin: 10px 0;
+    }
+
+    .nav-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-items li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 5px 15px;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .nav-items a:hover {
+      color: cyan;
+    }
+
+    
+    .image-container {
+      display: flex;
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
+      height: calc(50vh - 60px);
+    }
+
+    .circular-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white; 
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+      transition: transform 0.7s ease-in-out, box-shadow 0.3s ease; 
+    }
+    .circular-image:hover {
+      transform: scale(1.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    #name {
+      margin-top: 35px; 
+      font-size: 40px;
+      font-weight: bold;
+      color: white;
+      transition: all 0.5s ease-in-out;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+    }
+
+    #name:hover {
+      color: white;
+      transform: scale(0.5s); 
+      text-shadow: 0 5px 15px rgba(0, 255, 255, 0.8);
+      letter-spacing: 2px; 
+    }
+    #OMAR:hover
+    {
+      color:  wheat;
+      transform: scale(0.5s); 
+      text-shadow: 0 5px 15px rgba(0, 255, 255, 0.8); 
+      letter-spacing: 2px;
+    }
+    .main-content {
+      flex: 1; 
+      padding: 20px;
+    }
+    .cv-content {
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 800px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .cv-content h2 {
+      color: #004d4d; 
+      margin-bottom: 10px;
+    }
+
+    .cv-content p {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .cv-content ul {
+      padding-left: 20px;
+      color: #333;
+    }
+    footer {
+      background-color: #004d4d; 
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      width: 100%;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 20px;
+      transition: transform 0.3s ease, color 0.3s ease; 
+    }
+
+    footer a:hover {
+      color: #00ffff; 
+      transform: scale(1.2); 
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>

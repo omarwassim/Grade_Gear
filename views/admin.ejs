@@ -1,0 +1,282 @@
+<%- include('partials/adminheader') %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-lg-2 sidebar p-3">
+      <h3 class="mb-4">Admin Dashboard</h3>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" data-section="users">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-section="reservations"
+            >Reservations</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-section="engineers">Engineers</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9 col-lg-10 content">
+      <% if (typeof error !== 'undefined' && error) { %>
+      <div class="alert alert-danger"><%= error %></div>
+      <% } %>
+      <div class="form-section active" id="users-section">
+        <h2>User Management</h2>
+        <div class="mb-4">
+          <h4>Registered Users</h4>
+          <% if (typeof users === 'undefined' || users.length === 0) { %>
+          <div class="alert alert-warning">No users found</div>
+          <% } else { %>
+          <table class="table table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Projects</th>
+                <th>Start Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach(user => { %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td><%= user.projectName || 'None' %></td>
+                <td>
+                  <%= user.startDate ? new
+                  Date(user.startDate).toLocaleDateString() : 'N/A' %>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-danger btn-sm"
+                    data-user-id="<%= user.id %>"
+                    onclick="handleDelete(this)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+          <% } %>
+        </div>
+      </div>
+      <div class="form-section" id="reservations-section">
+        <h2>Reservation Management</h2>
+        <div class="mb-4">
+          <h4>All Reservations</h4>
+          <% if (typeof reservations === 'undefined' || reservations.length ===
+          0) { %>
+          <div class="alert alert-warning">No reservations found</div>
+          <% } else { %>
+          <table class="table table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Project</th>
+                <th>Client</th>
+                <th>Type</th>
+                <th>Dates</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+                <!-- New column for buttons -->
+              </tr>
+            </thead>
+            <tbody>
+              <% reservations.forEach(reservation => { %>
+              <tr>
+                <td><%= reservation.id %></td>
+                <td><%= reservation.project_name %></td>
+                <td><%= reservation.contact_mail %></td>
+                <td><%= reservation.project_type %></td>
+                <td>
+                  <%= new Date(reservation.start_date).toLocaleDateString() %> -
+                  <%= new Date(reservation.end_date).toLocaleDateString() %>
+                </td>
+                <td>$<%= reservation.price %></td>
+                <td>
+                  <span
+                    class="badge bg-<%= reservation.status === 'approved' ? 'success' : reservation.status === 'rejected' ? 'danger' : 'warning' %>"
+                  >
+                    <%= reservation.status %>
+                  </span>
+                </td>
+                <td>
+                  <% if (reservation.status === 'pending') { %>
+                  <button
+                    class="btn btn-success btn-sm accept-btn"
+                    data-id="<%= reservation.id %>"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    class="btn btn-danger btn-sm reject-btn"
+                    data-id="<%= reservation.id %>"
+                  >
+                    Reject
+                  </button>
+                  <% } %>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Engineers Section -->
+      <div class="form-section" id="engineers-section">
+        <h2>Engineer Management</h2>
+        <div class="mb-4">
+          <h4>Current Engineers</h4>
+          <% if (typeof engineers === 'undefined' || engineers.length === 0) {
+          %>
+          <div class="alert alert-warning">No engineers found</div>
+          <% } else { %>
+          <table class="table table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Specialization</th>
+                <th>Experience</th>
+                <th>Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% engineers.forEach(engineer => { %>
+              <tr>
+                <td><%= engineer.id %></td>
+                <td><%= engineer.name %></td>
+                <td><%= engineer.specialization %></td>
+                <td><%= engineer.experience_years %> years</td>
+                <td>
+                  <div><%= engineer.email %></div>
+                  <div><%= engineer.phone %></div>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const section = e.target.dataset.section;
+      document
+        .querySelectorAll(".nav-link")
+        .forEach((nav) => nav.classList.remove("active"));
+      e.target.classList.add("active");
+      document
+        .querySelectorAll(".form-section")
+        .forEach((sec) => sec.classList.remove("active"));
+      document.getElementById(`${section}-section`).classList.add("active");
+    });
+  });
+
+  function handleDelete(button) {
+    const userId = button.dataset.userId;
+    deleteUser(userId);
+  }
+
+  async function deleteUser(userId) {
+    if (
+      confirm(
+        "Are you sure you want to delete this user and all their reservations?"
+      )
+    ) {
+      try {
+        const response = await fetch(`/admin/users/${userId}`, {
+          method: "DELETE",
+        });
+        const result = await response.json();
+        if (result.success) {
+          alert("User deleted successfully!");
+          location.reload();
+        } else {
+          alert("Error: " + (result.error || "Failed to delete user"));
+        }
+      } catch (error) {
+        alert("Error: " + error.message);
+      }
+    }
+  }
+  async function loadReservations() {
+    try {
+      const response = await fetch("/admin/reservations");
+      const data = await response.json();
+    } catch (error) {
+      console.error("Error loading reservations:", error);
+    }
+  }
+  loadReservations();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.accept-btn').forEach(button => {
+  button.addEventListener('click', async function() {
+    const reservationId = this.getAttribute('data-id');
+    
+    try {
+      const response = await fetch(`/admin/reservations/${reservationId}/approve`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (response.ok) {
+        location.reload(); 
+      } else {
+        const error = await response.json();
+        alert('Approval failed: ' + (error.error || 'Unknown error'));
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Network error - please try again');
+    }
+  });
+    });
+    document.querySelectorAll(".reject-btn").forEach((button) => {
+      button.addEventListener("click", async function () {
+        if (
+          !confirm(
+            "Are you sure you want to reject and delete this reservation?"
+          )
+        ) {
+          return;
+        }
+        const reservationId = this.getAttribute("data-id");
+        try {
+          const response = await fetch(`/admin/reservations/${reservationId}`, {
+            method: "DELETE",
+          });
+
+          if (response.ok) {
+            alert("Reservation rejected and deleted!");
+            location.reload();
+          } else {
+            const error = await response.json();
+            alert("Error: " + error.error);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Failed to reject reservation");
+        }
+      });
+    });
+  });
+</script>
+<%- include('partials/footer') %>
